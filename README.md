@@ -1,6 +1,6 @@
 # 2. What is the use of the keyof keyword in TypeScript? Provide an example.
 
-`keyof` is an operator used in TypeScript to use the keys/properties of a type to create a new type but the keys/properties are in union, meaning it can be any of the keys. Let's have a look at the example below -
+`keyof` হল একটি অপারেটর যা টাইপস্ক্রিপ্টে ব্যবহৃত হয় এবং এর দ্বারা একটি টাইপের কী/প্রোপার্টি ব্যবহার করে নতুন টাইপ তৈরি করা যায়, কিন্তু সেক্ষেত্রে কী/প্রোপার্টিগুলি ইউনিওন অবস্থায় থাকে। অর্থাৎ যখন এই নতুন টাইপ টি ব্যবহার করা হবে কোন ভ্যারিয়েবলের জন্য তখন এর ভ্যালু যেকোনো কী/প্রোপার্টি হতে পারে। আরও বুঝতে নীচের উদাহরণটি একবার দেখে নেওয়া যাক -
 
 ```jsx
 type Vehicle = {
@@ -16,9 +16,9 @@ const person1: Owner1 = "car";
 const person2: Owner2 = "bike";
 ```
 
-Here the `Owner1` and `Owner2` are same variable but first one, we are declaring it manually. Second one, we are declaring it automatically using keyof operator.
+এখানে `Owner1` এবং `Owner2` একই ধরণের কিন্তু প্রথমটি, আমরা এটি ম্যানুয়ালি ঘোষণা করছি। দ্বিতীয়টি, আমরা keyof অপারেটর ব্যবহার করে এটি স্বয়ংক্রিয়ভাবে ঘোষণা করছি।
 
-Let's look at another example to understand how we can use it with objects -
+আসুন আরেকটি উদাহরণ দেখি কিভাবে আমরা এটি অবজেক্ট এর সাথে ব্যবহার করতে পারি -
 
 ```jsx
 const user = {
@@ -37,7 +37,7 @@ console.log(result1);
 console.log(result2);
 ```
 
-This code will work if we ask for properties that actually exist; it’ll return the value as expected. But the issue arises when we ask for the value of a property that does not exist. It would return undefined in that case. It’ll also show a warning on the return statement. This is where the Typescript keyof constraint comes in.
+এই কোডটি তখনই কাজ করবে যখন আমরা এমন প্রোপার্টির ভ্যালু বের করি যা আসলে বিদ্যমান; এটি প্রত্যাশা অনুযায়ী মান প্রদান করবে। কিন্তু সমস্যাটি তখন দেখা দেয় যখন আমরা এমন একটি প্রোপার্টির মান বের করতে চাই যা অবজেক্টে বিদ্যমান নেই। সেই ক্ষেত্রে এটি undefined ফেরত দেয়। এবং এটির রিটার্ন স্টেটমেন্টেও একটি সতর্কতা দেখাবে। এখানেই টাইপস্ক্রিপ্টের keyof সীমাবদ্ধতা বা কনস্ট্রেইন্ট আসে।
 
 ```jsx
 type User = {
@@ -63,21 +63,21 @@ console.log(result1);
 // console.log(result2);
 ```
 
-We are defining that the `Y` property must be something that `X` object aka `user` object has.
+আমরা সংজ্ঞায়িত করছি যে `Y` প্রোপার্টি টি এমন কিছু হতে হবে যা `X` অবজেক্ট ওরফে `user` অবজেক্টে আছে।
 
-### Conclusion:
+### উপসংহারঃ
 
-So, we can use the `keyof` operator to define new types and also use it for objects with a mix of constraint to make our code more robust and bug free.
+সুতরাং, আমরা নতুন টাইপ সংজ্ঞায়িত করতে `keyof` অপারেটর ব্যবহার করতে পারি এবং অবজেক্টের ক্ষেত্রে অপারেটরের সাথে কন্সট্রেইন্ট ব্যাবহার করে আমরা আমাদের কোডকে আরও শক্তিশালী এবং বাগ মুক্ত করতে পারি।
 
 ---
 
 # 5. Provide an example of using union and intersection types in TypeScript.
 
-Typescript is build on top of JavaScript but it has more benefits. Two of those benefits are Union and intersection types. They are one of the most important methods used in Typescript. These methods makes our code reusable, flexible and cleaner. First we'll define what they are.
+টাইপস্ক্রিপ্ট জাভাস্ক্রিপ্টের উপরে তৈরি কিন্তু এর আরও সুবিধা রয়েছে। এর মধ্যে দুটি সুবিধা হল ইউনিয়ন এবং ইন্টারসেকশন টাইপ। এগুলি টাইপস্ক্রিপ্টে ব্যবহৃত সবচেয়ে গুরুত্বপূর্ণ পদ্ধতিগুলির মধ্যে একটি। এই পদ্ধতিগুলি আমাদের কোডকে পুনঃব্যবহারযোগ্য, নমনীয় এবং পরিষ্কার করে তোলে। প্রথমে আমরা এগুলি কী তা সংজ্ঞায়িত করব।
 
 ### Union Type
 
-We can use union types to define a new type by combining 2 types but the new type can take the form of any of the 2 types.
+আমরা ইউনিয়ন ব্যবহার করে দুটি টাইপের সমন্বয় করে একটি নতুন টাইপ তৈরি করতে পারি তবে নতুন টাইপটি সমন্বয়কৃত দুটি টাইপের যেকোনো একটির রূপ নিতে পারে।
 
 ```tsx
 type Student = {
@@ -94,20 +94,20 @@ type officeWorker = {
 type Person = Student | officeWorker;
 ```
 
-We can also use it to declare variables where multiple values can be available.
+আমরা এটি ব্যবহার করে এমন ভেরিয়েবল ঘোষণা করতে পারি যেখানে একাধিক মান পাওয়া যেতে পারে।
 
 ```tsx
 type Vehicle = {
   brand: string;
   model: string;
   year: number;
-  drivetrain: AWD | RWD | FWD;
+  drivetrain: "AWD" | "RWD" | "FWD";
 };
 ```
 
-As we can see here that the drivetrain property here is dynamic and can be any 3 of them.
+আমরা এখানে দেখতে পাচ্ছি যে এখানকার ড্রাইভট্রেন প্রোপার্টি টি পরিবর্তনশীল এবং ৩টির মধ্যে যেকোনো ১টি হতে পারে।
 
-Union type is very useful when we are working of multiple types of parameters in a function -
+যখন আমরা একটি ফাংশনে একাধিক ধরণের প্যারামিটার নিয়ে কাজ করি তখন Union type খুবই কার্যকর -
 
 ```tsx
   const printType = (param: string | number) {
@@ -121,11 +121,11 @@ Union type is very useful when we are working of multiple types of parameters in
   }
 ```
 
-So, we use Union types when we are working with multiple types of value or variables. We can create dynamic functions and types with Union type.
+তাই, আমরা যখন একাধিক ধরণের মান বা ভেরিয়েবল নিয়ে কাজ করি তখন Union types ব্যবহার করি। আমরা Union type দিয়ে পরিবর্তনশীল ফাংশন এবং types তৈরি করতে পারি।
 
 ### Intersection Type
 
-We can use the intersection type to create new type where it must contain the properties of all the types.
+আমরা ইন্টারসেকশন টাইপ ব্যবহার করে দুইটি টাইপের সমন্বয় করে নতুন আরেকটি টাইপ তৈরি করতে পারি যেখানে সমন্বয়কৃত দুইটি টাইপের সকল প্রোপার্টি থাকবে।
 
 ```tsx
 type User = {
@@ -140,8 +140,8 @@ type AdminPrivilege = {
 type Admin = User & AdminPrivilege;
 ```
 
-This way we can make our types reusable which will keep our code DRY(Do not Repeat Yourself).
+এইভাবে আমরা আমাদের টাইপগুলিকে পুনঃব্যবহারযোগ্য করে তুলতে পারি যা আমাদের কোড DRY (Do not Repeat Yourself) রাখবে।
 
-### Conclusion
+### উপসংহারঃ
 
-Union and Intersection Types makes our code more cleaner and maintainable. As this gives us warning where we makes any mistakes, that way it's also less bug free.
+Union এবং Intersection Types আমাদের কোডকে আরও পরিষ্কার এবং রক্ষণাবেক্ষণযোগ্য করে তোলে। যেহেতু এটি আমাদের কোন ভুল করার সময়েই সতর্ক করে, তাই কোডে বাগ আসার সম্ভাবনা কমে যায়।
